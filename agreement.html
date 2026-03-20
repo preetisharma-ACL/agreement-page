@@ -463,7 +463,7 @@
 
             // Prevent direct access
             if (localStorage.getItem("formSubmitted") !== "true") {
-                window.location.href = "/index.html";
+                window.location.href = "/";
                 return;
             }
 
@@ -485,8 +485,7 @@
                 setText("website", data.website);
             }
 
-            // Checkbox + Button control
-            const checkbox = document.querySelector('input[type="checkbox"]');
+            const checkbox = document.getElementById("agreeCheck");
             const btn = document.getElementById("aggreeBtn");
 
             if (!checkbox || !btn) return;
@@ -497,8 +496,22 @@
                 btn.disabled = !checkbox.checked;
             });
 
-            //  Agree button click
+            function showAlert() {
+                document.getElementById("customAlert").style.display = "flex";
+            }
+
+            function closeAlert() {
+                document.getElementById("customAlert").style.display = "none";
+            }
+
+            // Single click handler
             btn.addEventListener("click", () => {
+
+                if (!checkbox.checked) {
+                    showAlert();
+                    return;
+                }
+
                 btn.innerText = "Processing...";
                 btn.disabled = true;
 
@@ -508,26 +521,6 @@
                 }, 800);
             });
 
-        });
-    </script>
-    <script>
-        function showAlert() {
-            document.getElementById("customAlert").style.display = "flex";
-        }
-
-        function closeAlert() {
-            document.getElementById("customAlert").style.display = "none";
-        }
-
-        document.getElementById("aggreeBtn").addEventListener("click", function () {
-            const checkbox = document.getElementById("agreeCheck");
-
-            if (!checkbox.checked) {
-                showAlert(); 
-                return;
-            }
-
-            window.location.href = "thankyou.html";
         });
     </script>
     <div id="customAlert" class="custom-alert">
