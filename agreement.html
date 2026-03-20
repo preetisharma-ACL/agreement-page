@@ -58,7 +58,8 @@
         <h1 class="main-heading">
             Campaign Execution, Delivery & Refund Agreement
         </h1>
-        <p>Between AAJneeti Connect Ltd. (ACL) and <span class="clientName"></span>- <span class="companyName"></span></p>
+        <p>Between AAJneeti Connect Ltd. (ACL) and <span class="clientName"></span>- <span class="companyName"></span>
+        </p>
 
         <div class="client-box">
             <div class="client-grid">
@@ -448,7 +449,7 @@
     <div class="footer">
         <div class="checkbox-wrapper">
             <label class="disclaimer-text">
-                <input type="checkbox" required>
+                <input type="checkbox" id="agreeCheck" required>
                 <span> I hereby agree to
                     the Refund Policy Agreement and confirm that I have carefully read and understood all the terms and
                     conditions. </span>
@@ -456,7 +457,8 @@
         </div>
         <button class="agree-btn" id="aggreeBtn">I Agree & Submit</button>
     </div>
-    <script>
+
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", function () {
 
             // Prevent direct access
@@ -507,8 +509,34 @@
             });
 
         });
+    </script> -->
+    <script>
+        function showAlert() {
+            document.getElementById("customAlert").style.display = "flex";
+        }
+
+        function closeAlert() {
+            document.getElementById("customAlert").style.display = "none";
+        }
+
+        document.getElementById("aggreeBtn").addEventListener("click", function () {
+            const checkbox = document.getElementById("agreeCheck");
+
+            if (!checkbox.checked) {
+                showAlert(); 
+                return;
+            }
+
+            window.location.href = "thankyou.html";
+        });
     </script>
-    
+    <div id="customAlert" class="custom-alert">
+        <div class="alert-box">
+            <i class="fa fa-exclamation-circle"></i>
+            <p>Please tick the checkbox to proceed.</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
 </body>
 
 </html>

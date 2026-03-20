@@ -11734,3 +11734,53 @@ textarea:-webkit-autofill {
         grid-template-columns: 1fr;
     }
 }
+.custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.alert-box {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    animation: fadeIn 0.3s ease;
+}
+
+.alert-box i {
+    font-size: 40px;
+    color: #8b0000;
+    margin-bottom: 10px;
+}
+
+.alert-box p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.alert-box button {
+    background: #8b0000;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.alert-box button:hover {
+    background: #a80000;
+}
+
+@keyframes fadeIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
