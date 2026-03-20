@@ -490,21 +490,15 @@
 
             if (!checkbox || !btn) return;
 
-            btn.disabled = true;
-
-            checkbox.addEventListener("change", () => {
-                btn.disabled = !checkbox.checked;
-            });
-
             function showAlert() {
                 document.getElementById("customAlert").style.display = "flex";
             }
 
-            function closeAlert() {
+            window.closeAlert = function () {
                 document.getElementById("customAlert").style.display = "none";
             }
 
-            // Single click handler
+            // Click handler
             btn.addEventListener("click", () => {
 
                 if (!checkbox.checked) {
