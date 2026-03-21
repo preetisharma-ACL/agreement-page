@@ -67,7 +67,7 @@ function handleLandingForm(formId) {
 
     isFormSubmitted = true;
 
-    window.location.href = "/agreement";
+    window.location.href = "/agreement.html";
   });
 }
 
@@ -152,6 +152,7 @@ function handleAgreementPage() {
 
       if (!response.ok) throw new Error("API failed");
       console.log(agreementLink);
+   
       localStorage.removeItem("policyData");
       localStorage.removeItem("formSubmitted");
 
