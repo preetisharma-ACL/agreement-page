@@ -93,6 +93,7 @@
                 font-size: 14px;
             }
         }
+
         .agree-btn {
             background-color: #b10303;
             color: #fff;
@@ -118,13 +119,32 @@
             <p class="highlight">Your agreement has been successfully recorded.</p>
             <p>A copy has been sent to your registered email.</p>
             <p>Our team will now proceed with your campaign setup.</p>
-
+            <p id="agreementIdText" style="margin-top:10px; font-weight:600; color:#b10303;"></p>
             <div>
                 <button class="agree-btn" onclick="window.location.href='/'">Back to Home</button>
             </div>
-
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const agreementId = localStorage.getItem("agreementId");
+
+            if (agreementId) {
+
+                const url = window.location.origin + "/agreement-view.html?id=" + agreementId;
+
+                document.getElementById("agreementIdText").innerHTML = `
+            Your Agreement ID: <strong>${agreementId}</strong><br>
+            <a href="${url}" style="color:#b10303; text-decoration:underline;">
+                View Your Agreement
+            </a>
+        `;
+            }
+
+        });
+    </script>
 </body>
 
 </html>

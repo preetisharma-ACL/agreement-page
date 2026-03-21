@@ -1,51 +1,3 @@
-/* ----------------------------------------------------------------------------------------
-* Author        : Awaiken
-* Template Name : Skyvilla - Real Estate & Construction Group HTML Template
-* File          : CSS File
-* Version       : 1.0
-* ---------------------------------------------------------------------------------------- */
-/* INDEX
-----------------------------------------------------------------------------------------
-01. Global Variables
-02. General css
-03. Header css
-04. Hero css
-05. About Us css
-06. Our Services css
-07. Who We Are css
-08. Intro Video css
-09. Our Commitment css
-10. Our Projects css
-11. Our Fact css
-12. CTA Box css
-13. Our FAQs css
-14. Our Testimonials css
-15. Our Blog css
-16. Footer css
-17. About Us Page css
-18. Services Page css
-19. Service Single css
-20. Blog Archive css
-21. Blog Single css
-22. Projects Page css
-23. Project Single css
-24. Team Page css
-25. Team Single css
-26. Pricing Page css
-27. Testimonials Page css
-28. Image Gallery css
-29. Video Gallery css
-30. FAQ's Page css
-31. Contact Us Page css
-32.	404 Error Page css
-33. Responsive css
-34. Home - Version 2 css
-35. Home - Version 3 css 
--------------------------------------------------------------------------------------- */
-
-/************************************/
-/*** 	 01. Global Variables	  ***/
-/************************************/
 
 :root {
     --primary-color: #040618;
@@ -11535,7 +11487,7 @@ ul {
     bottom: 0;
     background: #fff;
     border-top: 1px solid #eee;
-    padding: 35px 25px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11602,6 +11554,21 @@ ul {
     height: 30px;
     width: 24px;
     flex-shrink: 0;
+}
+.checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.disclaimer-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.checkbox-wrapper p {
+    margin-left: 32px; 
 }
 
 .main-heading {
@@ -11784,3 +11751,5 @@ textarea:-webkit-autofill {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+
+

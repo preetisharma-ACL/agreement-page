@@ -201,6 +201,17 @@
             </ul>
         </div>
 
+        <!-- 7 -->
+        <div class="section">
+            <h2>Finality of Initial Lead Status</h2>
+            <p>Once a lead is marked by the Client as “Interested” or “Qualified” at any stage, the same lead cannot be
+                reclassified later as “Not Interested”, “Not Qualified”, “Fake”, or any other negative category.
+            </p>
+            <p>The first recorded positive status will be treated as final and binding for validation, billing, and
+                performance evaluation purposes.
+            </p>
+        </div>
+
         <!-- 8 -->
         <div class="section">
             <h2>Lead Qualification Rate Commitment</h2>
@@ -451,72 +462,18 @@
             <label class="disclaimer-text">
                 <input type="checkbox" id="agreeCheck" required>
                 <span> I hereby agree to
-                    the Refund Policy Agreement and confirm that I have carefully read and understood all the terms and
-                    conditions. </span>
+                    the Refund Policy Agreement and confirm that I have carefully read and understood all the Terms &
+                    Conditions. </span>
+
             </label>
+            <p><strong>Note : </strong> This agreement shall become valid only upon receipt of payment. In the absence
+                of payment, it will be considered null and void.</p>
         </div>
         <button class="agree-btn" id="aggreeBtn">I Agree & Submit</button>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-            // Prevent direct access
-            if (localStorage.getItem("formSubmitted") !== "true") {
-                window.location.href = "/";
-                return;
-            }
-
-            // Set user data
-            const data = JSON.parse(localStorage.getItem("policyData"));
-
-            if (data) {
-                const setText = (className, value) => {
-                    document.querySelectorAll("." + className).forEach(el => {
-                        el.textContent = value || "";
-                    });
-                };
-
-                setText("clientName", data.clientName);
-                setText("companyName", data.companyName);
-                setText("designation", data.designation);
-                setText("email", data.email);
-                setText("phone", data.phone);
-                setText("website", data.website);
-            }
-
-            const checkbox = document.getElementById("agreeCheck");
-            const btn = document.getElementById("aggreeBtn");
-
-            if (!checkbox || !btn) return;
-
-            function showAlert() {
-                document.getElementById("customAlert").style.display = "flex";
-            }
-
-            window.closeAlert = function () {
-                document.getElementById("customAlert").style.display = "none";
-            }
-
-            // Click handler
-            btn.addEventListener("click", () => {
-
-                if (!checkbox.checked) {
-                    showAlert();
-                    return;
-                }
-
-                btn.innerText = "Processing...";
-                btn.disabled = true;
-
-                setTimeout(() => {
-                    localStorage.removeItem("formSubmitted");
-                    window.location.href = "/thankyou.html";
-                }, 800);
-            });
-
-        });
-    </script>
     <div id="customAlert" class="custom-alert">
         <div class="alert-box">
             <i class="fa fa-exclamation-circle"></i>
@@ -524,6 +481,8 @@
             <button onclick="closeAlert()">OK</button>
         </div>
     </div>
+
+    <script src="form.js"></script>
 </body>
 
 </html>
