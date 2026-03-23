@@ -92,10 +92,101 @@
             padding: 5px;
         }
     }
+
+    /* From Uiverse.io by nawinasokan */
+    .loader-con {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+    }
+
+    .pfile {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 80px;
+        height: 100px;
+        background:  linear-gradient(90deg, #b324db, #ac8dcb);;
+        border-radius: 4px;
+        animation: flyRight 3s ease-in-out infinite;
+        opacity: 0;
+    }
+
+    .loader-con h2 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #b324db;
+        margin-bottom: 100px;
+    }
+
+    .pfile::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 28px;
+        height: 4px;
+        background-color: #ffffff;
+        border-radius: 2px;
+    }
+
+    .pfile::after {
+        content: "";
+        position: absolute;
+        top: 13px;
+        left: 6px;
+        width: 18px;
+        height: 4px;
+        background-color: #ffffff;
+        border-radius: 2px;
+    }
+
+    @keyframes flyRight {
+        0% {
+            left: -10%;
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        50% {
+            left: 45%;
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        100% {
+            left: 100%;
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+
+    .pfile {
+        animation-delay: calc(var(--i) * 0.6s);
+    }
 </style>
 
 <body>
-
+    <!-- From Uiverse.io by nawinasokan -->
+    <div class="loader-con">
+        <h2>Loading Agreement...</h2>
+        <div class="loader-part">
+            <div style="--i: 0;" class="pfile"></div>
+            <div style="--i: 1;" class="pfile"></div>
+            <div class="pfile" style="--i: 2;"></div>
+            <div class="pfile" style="--i: 3;"></div>
+            <div class="pfile" style="--i: 4;"></div>
+            <div class="pfile" style="--i: 5;"></div>
+        </div>
+    </div>
     <!-- SAME AGREEMENT UI -->
     <div class="header">
         <h1>Campaign Execution, Delivery & Refund Agreement</h1>
@@ -137,6 +228,7 @@
                 </div>
             </div>
 
+            <!--  YAHAN APNA FULL AGREEMENT CONTENT COPY KARO -->
             <!-- (Section 2 to 21 SAME paste kar dena) -->
 
             <div class="container bg-image">
@@ -527,6 +619,7 @@
 
 
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <script>
@@ -550,16 +643,17 @@
         let isDataLoaded = false;
 
         function handleResponse(data) {
-
-            //  agar data already load ho chuka hai, ignore karo
             if (isDataLoaded) return;
 
-            if (!data || data.error) {
-                console.log("Invalid data, ignoring...");
-                return; //  page overwrite mat karo
-            }
+            isDataLoaded = true; // mark loaded FIRST
 
-            isDataLoaded = true; // mark as loaded
+            if (!data || data.error) {
+                console.log("No data received");
+
+                // ✅ STILL HIDE LOADER
+                document.querySelector(".loader-con").style.display = "none";
+                return;
+            }
 
             setText("clientName", data.form_name);
             setText("companyName", data.form_companyName);
@@ -567,6 +661,9 @@
             setText("email", data.form_email);
             setText("phone", data.form_mobile);
             setText("website", data.form_website);
+
+            // ✅ HIDE LOADER
+            document.querySelector(".loader-con").style.display = "none";
         }
 
         function setText(className, value) {
@@ -577,7 +674,7 @@
 
         function downloadPDF() {
             const element = document.getElementById("pdfContent");
-            // 🔥 hide button
+            //  hide button
             const btn = document.querySelector(".no-print");
             btn.style.display = "none";
 
@@ -599,7 +696,7 @@
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
-                // 🔥 show button again after PDF
+                //  show button again after PDF
                 btn.style.display = "inline-block";
             });
         }
