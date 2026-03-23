@@ -33,7 +33,6 @@ function handleLandingForm(formId) {
     const companyName = form.querySelector('[name="companyName"]')?.value.trim() || "";
     const designation = form.querySelector('[name="designation"]')?.value.trim() || "";
     const email = form.querySelector('[name="email"]')?.value.trim() || "";
-    const department = form.querySelector('[name="department"]')?.value.trim() || "";
     const phone = form.querySelector('[name="phone"]')?.value.trim() || "";
     const website = form.querySelector('[name="website"]')?.value.trim() || "";
     const city = form.querySelector('[name="City"]')?.value.trim() || "";
@@ -139,7 +138,9 @@ function handleAgreementPage() {
         agreement_id: agreementId,
         agreement_link: agreementLink,
         agreement_accepted: true,
-        agreement_timestamp: new Date().toISOString()
+        agreement_timestamp: new Date().toISOString(),
+        doc_url: document.URL,
+        doc_ref: document.referrer,
       };
 
       const response = await fetch("https://apiv2.aajneetiadvertising.com/lead/save", {
@@ -152,7 +153,7 @@ function handleAgreementPage() {
 
       if (!response.ok) throw new Error("API failed");
       console.log(agreementLink);
-   
+
       localStorage.removeItem("policyData");
       localStorage.removeItem("formSubmitted");
 
