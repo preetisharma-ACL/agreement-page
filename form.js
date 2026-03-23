@@ -37,7 +37,7 @@ function handleLandingForm(formId) {
     const website = form.querySelector('[name="website"]')?.value.trim() || "";
     const city = form.querySelector('[name="City"]')?.value.trim() || "";
 
-    if (!clientName || !companyName || !designation || !email ||  !phone || !website || !city) {
+    if (!clientName || !companyName || !designation || !email || !phone || !website || !city) {
       alert("Please fill all fields");
       return;
     }
@@ -138,8 +138,11 @@ function handleAgreementPage() {
         agreement_id: agreementId,
         agreement_link: agreementLink,
         agreement_accepted: true,
+
         agreement_timestamp: new Date().toISOString(),
-       
+        doc_url: document.URL,
+        doc_ref: document.referrer,
+
       };
 
       const response = await fetch("https://apiv2.aajneetiadvertising.com/lead/save", {
