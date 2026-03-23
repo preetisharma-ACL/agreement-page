@@ -139,8 +139,7 @@ function handleAgreementPage() {
         agreement_link: agreementLink,
         agreement_accepted: true,
         agreement_timestamp: new Date().toISOString(),
-        doc_url: document.URL,
-        doc_ref: document.referrer,
+       
       };
 
       const response = await fetch("https://apiv2.aajneetiadvertising.com/lead/save", {
