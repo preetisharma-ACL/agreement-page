@@ -37,7 +37,7 @@ function handleLandingForm(formId) {
     const website = form.querySelector('[name="website"]')?.value.trim() || "";
     const city = form.querySelector('[name="City"]')?.value.trim() || "";
 
-    if (!clientName || !companyName || !designation || !email || !department || !phone || !website || !city) {
+    if (!clientName || !companyName || !designation || !email ||  !phone || !website || !city) {
       alert("Please fill all fields");
       return;
     }
